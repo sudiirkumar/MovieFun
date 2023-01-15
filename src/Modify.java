@@ -1,6 +1,15 @@
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import javax.swing.JOptionPane;
+
 public class Modify extends javax.swing.JFrame {
     public Modify() {
         initComponents();
+        txtname1.setText(DashBoard.user_name);
+        txtname2.setText(DashBoard.user_email);
+        txtname3.setText(DashBoard.user_mob);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -142,6 +151,7 @@ public class Modify extends javax.swing.JFrame {
         txtname1.setBackground(new java.awt.Color(0, 0, 0));
         txtname1.setForeground(new java.awt.Color(255, 255, 255));
         txtname1.setBorder(null);
+        txtname1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtname1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtname1ActionPerformed(evt);
@@ -171,6 +181,7 @@ public class Modify extends javax.swing.JFrame {
 
         hide.setForeground(new java.awt.Color(255, 255, 255));
         hide.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/hide.png"))); // NOI18N
+        hide.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         hide.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 hideMouseClicked(evt);
@@ -192,6 +203,7 @@ public class Modify extends javax.swing.JFrame {
 
         show.setForeground(new java.awt.Color(255, 255, 255));
         show.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/show.png"))); // NOI18N
+        show.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         show.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 showMouseClicked(evt);
@@ -207,10 +219,11 @@ public class Modify extends javax.swing.JFrame {
                 txtpassActionPerformed(evt);
             }
         });
-        jPanel2.add(txtpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 300, 20));
+        jPanel2.add(txtpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 215, 280, 20));
 
         signup_btn.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
         signup_btn.setText("SAVE DETAILS");
+        signup_btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         signup_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 signup_btnActionPerformed(evt);
@@ -229,7 +242,6 @@ public class Modify extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void showMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showMouseClicked
-        // TODO add your handling code here:
         txtpass.setEchoChar((char)8226);
         show.setVisible(false);
         show.setEnabled(false);
@@ -238,7 +250,6 @@ public class Modify extends javax.swing.JFrame {
     }//GEN-LAST:event_showMouseClicked
 
     private void hideMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hideMouseClicked
-        // TODO add your handling code here:
         txtpass.setEchoChar((char)0);
         hide.setVisible(false);
         hide.setEnabled(false);
@@ -247,33 +258,49 @@ public class Modify extends javax.swing.JFrame {
     }//GEN-LAST:event_hideMouseClicked
 
     private void signup_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signup_btnActionPerformed
-        // TODO add your handling code here:
-        
+        String Name = txtname1.getText();
+        String Email = txtname2.getText();
+        String Mob = txtname3.getText();
+        String Pass = new String(txtpass.getPassword());
+        try{
+            Connection connection = (Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/db","root", "root");
+            PreparedStatement st = (PreparedStatement) connection.prepareStatement("UPDATE movie SET name=?,email=?,mob=?,password=? where name = ?");
+            st.setString(5,DashBoard.user_name);
+            st.setString(1,Name);
+            st.setString(2,Email);
+            st.setString(3, Mob);
+            if(Pass.equals(""))
+                st.setString(4,DashBoard.user_pass);
+            else
+                st.setString(4,Pass);
+            int rs = st.executeUpdate();
+            if(rs==1){
+                JOptionPane.showMessageDialog(signup_btn,"You have signed up successfully.\nYou can login now");
+                super.dispose();
+                new DashBoard().setVisible(true);
+            }
+        }
+        catch(Exception ex){
+            System.out.println(ex);
+            JOptionPane.showMessageDialog(signup_btn, "Server Error");
+        }
     }//GEN-LAST:event_signup_btnActionPerformed
 
     private void txtname1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtname1ActionPerformed
-        // TODO add your handling code here:
         txtname2.requestFocus();
     }//GEN-LAST:event_txtname1ActionPerformed
 
     private void txtname2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtname2ActionPerformed
-        // TODO add your handling code here:
         txtname3.requestFocus();
     }//GEN-LAST:event_txtname2ActionPerformed
 
     private void txtname3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtname3ActionPerformed
-        // TODO add your handling code here:
         txtpass.requestFocus();
     }//GEN-LAST:event_txtname3ActionPerformed
 
     private void txtpassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpassActionPerformed
-        // TODO add your handling code here:
         signup_btn.doClick();
     }//GEN-LAST:event_txtpassActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

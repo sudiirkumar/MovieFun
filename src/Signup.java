@@ -173,6 +173,7 @@ public class Signup extends javax.swing.JFrame {
 
         hide.setForeground(new java.awt.Color(255, 255, 255));
         hide.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/hide.png"))); // NOI18N
+        hide.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         hide.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 hideMouseClicked(evt);
@@ -194,6 +195,7 @@ public class Signup extends javax.swing.JFrame {
 
         show.setForeground(new java.awt.Color(255, 255, 255));
         show.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/show.png"))); // NOI18N
+        show.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         show.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 showMouseClicked(evt);
@@ -209,10 +211,11 @@ public class Signup extends javax.swing.JFrame {
                 txtpassActionPerformed(evt);
             }
         });
-        jPanel2.add(txtpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 300, 20));
+        jPanel2.add(txtpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 215, 280, 20));
 
         signup_btn.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
         signup_btn.setText("SIGNUP");
+        signup_btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         signup_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 signup_btnActionPerformed(evt);
@@ -231,7 +234,6 @@ public class Signup extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void showMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showMouseClicked
-        // TODO add your handling code here:
         txtpass.setEchoChar((char)8226);
         show.setVisible(false);
         show.setEnabled(false);
@@ -240,7 +242,6 @@ public class Signup extends javax.swing.JFrame {
     }//GEN-LAST:event_showMouseClicked
 
     private void hideMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hideMouseClicked
-        // TODO add your handling code here:
         txtpass.setEchoChar((char)0);
         hide.setVisible(false);
         hide.setEnabled(false);
@@ -249,7 +250,6 @@ public class Signup extends javax.swing.JFrame {
     }//GEN-LAST:event_hideMouseClicked
 
     private void signup_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signup_btnActionPerformed
-        // TODO add your handling code here:
         String Name = txtname1.getText();
         String Email = txtname2.getText();
         String Mob = txtname3.getText();
@@ -276,28 +276,20 @@ public class Signup extends javax.swing.JFrame {
     }//GEN-LAST:event_signup_btnActionPerformed
 
     private void txtname1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtname1ActionPerformed
-        // TODO add your handling code here:
         txtname2.requestFocus();
     }//GEN-LAST:event_txtname1ActionPerformed
 
     private void txtname2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtname2ActionPerformed
-        // TODO add your handling code here:
         txtname3.requestFocus();
     }//GEN-LAST:event_txtname2ActionPerformed
 
     private void txtname3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtname3ActionPerformed
-        // TODO add your handling code here:
         txtpass.requestFocus();
     }//GEN-LAST:event_txtname3ActionPerformed
 
     private void txtpassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpassActionPerformed
-        // TODO add your handling code here:
         signup_btn.doClick();
     }//GEN-LAST:event_txtpassActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

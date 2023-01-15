@@ -1,4 +1,8 @@
+import java.sql.*;
+import javax.swing.JOptionPane;
 public class Forgot extends javax.swing.JFrame {
+    static String Email;
+    static String Mob;
     public Forgot() {
         initComponents();
         jLabel13.setVisible(false);
@@ -32,7 +36,9 @@ public class Forgot extends javax.swing.JFrame {
         show = new javax.swing.JLabel();
         txtpass = new javax.swing.JPasswordField();
         signup_btn = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        update_btn = new javax.swing.JButton();
+        txtname1 = new javax.swing.JTextField();
+        txtname2 = new javax.swing.JTextField();
 
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("____________________________________");
@@ -111,7 +117,7 @@ public class Forgot extends javax.swing.JFrame {
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel13.setText("Password");
+        jLabel13.setText("New Password");
         jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 300, -1));
 
         jLabel5.setForeground(new java.awt.Color(204, 204, 204));
@@ -131,6 +137,7 @@ public class Forgot extends javax.swing.JFrame {
 
         hide.setForeground(new java.awt.Color(255, 255, 255));
         hide.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/hide.png"))); // NOI18N
+        hide.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         hide.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 hideMouseClicked(evt);
@@ -148,6 +155,7 @@ public class Forgot extends javax.swing.JFrame {
 
         show.setForeground(new java.awt.Color(255, 255, 255));
         show.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/show.png"))); // NOI18N
+        show.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         show.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 showMouseClicked(evt);
@@ -163,10 +171,11 @@ public class Forgot extends javax.swing.JFrame {
                 txtpassActionPerformed(evt);
             }
         });
-        jPanel2.add(txtpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 300, 20));
+        jPanel2.add(txtpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 205, 280, 20));
 
         signup_btn.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
         signup_btn.setText("SEARCH");
+        signup_btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         signup_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 signup_btnActionPerformed(evt);
@@ -174,14 +183,36 @@ public class Forgot extends javax.swing.JFrame {
         });
         jPanel2.add(signup_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 160, 30));
 
-        jButton1.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
-        jButton1.setText("UPDATE");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        update_btn.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        update_btn.setText("UPDATE");
+        update_btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        update_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                update_btnActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 260, 160, 30));
+        jPanel2.add(update_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 260, 160, 30));
+
+        txtname1.setBackground(new java.awt.Color(0, 0, 0));
+        txtname1.setForeground(new java.awt.Color(255, 255, 255));
+        txtname1.setBorder(null);
+        txtname1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtname1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtname1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(txtname1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 280, -1));
+
+        txtname2.setBackground(new java.awt.Color(0, 0, 0));
+        txtname2.setForeground(new java.awt.Color(255, 255, 255));
+        txtname2.setBorder(null);
+        txtname2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtname2ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(txtname2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 280, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 400, 300));
 
@@ -194,7 +225,6 @@ public class Forgot extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void showMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showMouseClicked
-        // TODO add your handling code here:
         txtpass.setEchoChar((char)8226);
         show.setVisible(false);
         show.setEnabled(false);
@@ -203,7 +233,6 @@ public class Forgot extends javax.swing.JFrame {
     }//GEN-LAST:event_showMouseClicked
 
     private void hideMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hideMouseClicked
-        // TODO add your handling code here:
         txtpass.setEchoChar((char)0);
         hide.setVisible(false);
         hide.setEnabled(false);
@@ -212,28 +241,65 @@ public class Forgot extends javax.swing.JFrame {
     }//GEN-LAST:event_hideMouseClicked
 
     private void signup_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signup_btnActionPerformed
-        // TODO add your handling code here:
-        jLabel13.setVisible(true);
-        jLabel5.setVisible(true);
-        txtpass.setVisible(true);
-        show.setVisible(true);
-        hide.setVisible(true);
+        Email = txtname1.getText();
+        Mob = txtname2.getText();
+        try{
+            Connection con = (Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/db","root", "root");
+            PreparedStatement st = (PreparedStatement)con.prepareStatement("SELECT * from movie where email = ? and mob = ?");
+            st.setString(1,Email);
+            st.setString(2,Mob);
+            ResultSet rs = st.executeQuery();
+            if(rs.next()){
+                jLabel13.setVisible(true);
+                jLabel5.setVisible(true);
+                txtpass.setVisible(true);
+                show.setVisible(true);
+                hide.setVisible(true);
+                txtname1.setEditable(false);
+                txtname2.setEditable(false);
+            }
+            else{
+                JOptionPane.showMessageDialog(signup_btn, "Account not found");
+            }
+        }
+        catch(Exception ex){
+            System.out.println(ex);
+        }
     }//GEN-LAST:event_signup_btnActionPerformed
 
     private void txtpassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpassActionPerformed
-        // TODO add your handling code here:
-        signup_btn.doClick();
+        update_btn.doClick();
     }//GEN-LAST:event_txtpassActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        new Login().setVisible(true);
-        super.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void update_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_update_btnActionPerformed
+        String Pass = new String(txtpass.getPassword());
+        try{
+            Connection con = (Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/db","root", "root");
+            PreparedStatement st = (PreparedStatement)con.prepareStatement("UPDATE movie SET password = ? where email = ?");
+            st.setString(2,Email);
+            st.setString(1,Pass);
+            int rs = st.executeUpdate();
+            if(rs==1){
+                JOptionPane.showMessageDialog(update_btn, "Password updated successfully!\nYou can login now");
+                new Login().setVisible(true);
+                super.dispose();
+            }
+            else{
+                JOptionPane.showMessageDialog(update_btn, "Server error");
+            }
+        }
+        catch(Exception ex){
+            System.out.println(ex);
+        }
+    }//GEN-LAST:event_update_btnActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void txtname1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtname1ActionPerformed
+        txtname2.requestFocus();
+    }//GEN-LAST:event_txtname1ActionPerformed
+
+    private void txtname2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtname2ActionPerformed
+        signup_btn.doClick();
+    }//GEN-LAST:event_txtname2ActionPerformed
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -244,7 +310,6 @@ public class Forgot extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel hide;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -264,6 +329,9 @@ public class Forgot extends javax.swing.JFrame {
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JLabel show;
     private javax.swing.JButton signup_btn;
+    private javax.swing.JTextField txtname1;
+    private javax.swing.JTextField txtname2;
     private javax.swing.JPasswordField txtpass;
+    private javax.swing.JButton update_btn;
     // End of variables declaration//GEN-END:variables
 }

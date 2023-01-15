@@ -1,6 +1,30 @@
 public class Booking extends javax.swing.JFrame {
+    public static String moviename1 = "ABCD";
+    public static String moviename2 = "3 Idiots";
+    public static String time1[] = new String[6];
+    public static String time2[] = new String[6];
+    public static String movieSelected;
+    public static String theaterSelected;
+    public static String timeSelected;
     public Booking() {
         initComponents();
+        jLabel1.setText("1. "+moviename1);
+        jLabel6.setText("2. "+moviename2);
+        
+        time1[0] = "09:00 AM";
+        time1[1] = "12:00 PM";
+        time1[2] = "04:00 PM";
+        time1[3] = "09:30 AM";
+        time1[4] = "12:30 PM";
+        time1[5] = "04:30 PM";
+        
+        time2[0] = "10:00 AM";
+        time2[1] = "01:00 PM";
+        time2[2] = "05:00 PM";
+        time2[3] = "11:00 AM";
+        time2[4] = "02:00 PM";
+        time2[5] = "05:30 PM";
+        
         theater_panel.setVisible(false);
     }
     @SuppressWarnings("unchecked")
@@ -49,7 +73,7 @@ public class Booking extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("1. ABCD");
+        jLabel1.setText("1. ABCD1");
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -119,7 +143,7 @@ public class Booking extends javax.swing.JFrame {
             }
         });
         jLayeredPane1.add(jLabel2);
-        jLabel2.setBounds(310, 0, 20, 21);
+        jLabel2.setBounds(310, 0, 30, 20);
 
         theater_panel.setBackground(new java.awt.Color(0, 0, 0));
         theater_panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -133,18 +157,33 @@ public class Booking extends javax.swing.JFrame {
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("9:00 AM");
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         theater_panel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
 
         jButton2.setBackground(new java.awt.Color(0, 0, 0));
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("12:30 PM");
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         theater_panel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, -1, -1));
 
         jButton3.setBackground(new java.awt.Color(0, 0, 0));
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("4:00 PM");
         jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         theater_panel.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -156,18 +195,33 @@ public class Booking extends javax.swing.JFrame {
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setText("9:30 AM");
         jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         theater_panel.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
 
         jButton5.setBackground(new java.awt.Color(0, 0, 0));
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
         jButton5.setText("1:30 PM");
         jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
         theater_panel.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, -1, -1));
 
         jButton6.setBackground(new java.awt.Color(0, 0, 0));
         jButton6.setForeground(new java.awt.Color(255, 255, 255));
         jButton6.setText("5:00 PM");
         jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
         theater_panel.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, -1, -1));
 
         jLayeredPane1.add(theater_panel);
@@ -182,25 +236,29 @@ public class Booking extends javax.swing.JFrame {
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         theater_panel.setVisible(true);
         
-        jButton1.setText("09:00 AM");
-        jButton2.setText("12:00 PM");
-        jButton3.setText("04:00 PM");
+        movieSelected = moviename1;
         
-        jButton4.setText("09:30 AM");
-        jButton5.setText("12:30 PM");
-        jButton6.setText("04:30 PM");
+        jButton1.setText(time1[0]);
+        jButton2.setText(time1[1]);
+        jButton3.setText(time1[2]);
+        
+        jButton4.setText(time1[3]);
+        jButton5.setText(time1[4]);
+        jButton6.setText(time1[5]);
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
         theater_panel.setVisible(true);
         
-        jButton1.setText("10:00 AM");
-        jButton2.setText("01:00 PM");
-        jButton3.setText("05:00 PM");
+        movieSelected = moviename2;
         
-        jButton4.setText("11:00 AM");
-        jButton5.setText("02:00 PM");
-        jButton6.setText("05:30 PM");
+        jButton1.setText(time2[0]);
+        jButton2.setText(time2[1]);
+        jButton3.setText(time2[2]);
+        
+        jButton4.setText(time2[3]);
+        jButton5.setText(time2[4]);
+        jButton6.setText(time2[5]);
     }//GEN-LAST:event_jLabel6MouseClicked
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
@@ -211,6 +269,48 @@ public class Booking extends javax.swing.JFrame {
         new DashBoard().setVisible(true);
         super.dispose();
     }//GEN-LAST:event_jLabel12MouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        theaterSelected = "APR Cinemas";
+        timeSelected = movieSelected.equals(moviename1)?time1[0]:time2[0];
+        new Payment().setVisible(true);
+        super.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        theaterSelected = "APR Cinemas";
+        timeSelected = movieSelected.equals(moviename1)?time1[1]:time2[1];
+        new Payment().setVisible(true);
+        super.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        theaterSelected = "APR Cinemas";
+        timeSelected = movieSelected.equals(moviename1)?time1[2]:time2[2];
+        new Payment().setVisible(true);
+        super.dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        theaterSelected = "Sawan Cinemas";
+        timeSelected = movieSelected.equals(moviename1)?time1[3]:time2[3];
+        new Payment().setVisible(true);
+        super.dispose();
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        theaterSelected = "Sawan Cinemas";
+        timeSelected = movieSelected.equals(moviename1)?time1[4]:time2[4];
+        new Payment().setVisible(true);
+        super.dispose();
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        theaterSelected = "Sawan Cinemas";
+        timeSelected = movieSelected.equals(moviename1)?time1[5]:time2[5];
+        new Payment().setVisible(true);
+        super.dispose();
+    }//GEN-LAST:event_jButton6ActionPerformed
     public static void wait(int ms)
     {
         try
