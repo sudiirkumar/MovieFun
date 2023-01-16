@@ -275,7 +275,7 @@ public class Modify extends javax.swing.JFrame {
                 st.setString(4,Pass);
             int rs = st.executeUpdate();
             if(rs==1){
-                JOptionPane.showMessageDialog(signup_btn,"You have signed up successfully.\nYou can login now");
+                JOptionPane.showMessageDialog(signup_btn,"Your data is updated successfully.");
                 super.dispose();
                 new DashBoard().setVisible(true);
             }
